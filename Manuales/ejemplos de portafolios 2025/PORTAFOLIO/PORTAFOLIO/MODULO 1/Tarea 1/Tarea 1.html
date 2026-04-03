@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1, Tarea 1: Planificación y Monitoreo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f5; /* Light Gray background */
+            color: #18181b; /* Dark Gray text */
+            line-height: 1.6;
+        }
+
+        .page-container {
+            max-width: 8.5in;
+            min-height: 11in;
+            padding: 0.75in;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border: 1px solid #d4d4d8;
+            page-break-after: always;
+        }
+        
+        h1, h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #112D4E; /* Dark Blue */
+            letter-spacing: 1px;
+            border-bottom: 2px solid #DBE2EF; /* Light Blue Border */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #3F72AF; /* Medium Blue */
+            font-size: 1.5rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .platform-prompt {
+            background-color: #e4e4e7;
+            border-left: 4px solid #3F72AF;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #27272a;
+        }
+        
+        .platform-section-header {
+            background-color: #6b7280;
+            color: #ffffff;
+            padding: 8px 15px;
+            border-radius: 6px 6px 0 0;
+            font-weight: 700;
+        }
+        
+        .question-title {
+            font-weight: 700;
+            color: #374151;
+            margin-top: 1rem;
+        }
+
+        .card {
+            border: 1px solid #d4d4d8;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            overflow: hidden; /* To contain the header */
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+
+        .competente {
+            color: #2563EB; /* Blue */
+            font-weight: bold;
+        }
+
+        .destacado {
+            color: #166534; /* Dark Green */
+            font-weight: bold;
+        }
+        
+        .editable {
+            background-color: #f9fafb;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed #a1a1aa;
+            min-height: 50px;
+            outline: none;
+            color: #18181b;
+        }
+
+        .editable:focus {
+            border-color: #3F72AF;
+            box-shadow: 0 0 0 2px rgba(63, 114, 175, 0.5);
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            text-align: center;
+        }
+        
+        .btn-save {
+            background-color: #16a34a;
+            color: #ffffff;
+        }
+        .btn-save:hover {
+            background-color: #15803d;
+        }
+        
+        .btn-pdf {
+            background-color: #3F72AF;
+            color: #ffffff;
+        }
+        .btn-pdf:hover {
+            background-color: #112D4E;
+        }
+        
+        .legend-box {
+            background-color: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .legend-title {
+            font-weight: 700;
+            color: #0c4a6e;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        .legend-emoji {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .final-note {
+            background-color: #eef2ff;
+            border: 1px dashed #6366f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 0.85em;
+            text-align: center;
+            color: #1e1b4b;
+        }
+
+        @media print {
+            body { background-color: white !important; color: black !important; }
+            .page-container { box-shadow: none; margin: 0; padding: 0.5in; page-break-after: always; border: none; min-height: 10in; }
+            .no-print { display: none; }
+            h1, h2, h3 { color: black !important; border-bottom-color: #cccccc !important; }
+            .card { border: 1px solid #cccccc !important; }
+            .platform-prompt { background-color: #eeeeee !important; border-left-color: #000000 !important; color: black !important; }
+            .platform-section-header { background-color: #dddddd !important; color: black !important; border-bottom: 1px solid #cccccc; }
+            .editable { background-color: #f8f8f8 !important; border-color: #bbbbbb !important; color: black !important; padding: 10px; }
+            .competente { color: #2563EB !important; }
+            .destacado { color: #166534 !important; }
+            .legend-box { background-color: #f0f9ff !important; border-color: #bae6fd !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print fixed bottom-4 right-4 space-x-4">
+        <button onclick="saveProgress()" class="button btn-save">Guardar Avance</button>
+        <button onclick="window.print()" class="button btn-pdf">Descargar en PDF</button>
+    </div>
+
+    <!-- PÁGINA 1 -->
+    <div class="page-container">
+        <h1>Módulo 1: Planificación y Monitoreo</h1>
+        <h2>Tarea 1: Planificación diversificada y monitoreo de los aprendizajes</h2>
+        
+        <div class="legend-box">
+            <p class="legend-title">Simbología de Indicadores (Módulo 1)</p>
+            <div class="grid grid-cols-2 gap-x-8 gap-y-2">
+                <div class="legend-item"><span class="legend-emoji">🧠</span><span>Comprensión de la diversidad del curso</span></div>
+                <div class="legend-item"><span class="legend-emoji">💡</span><span>Relación entre actividades y objetivos</span></div>
+                <div class="legend-item"><span class="legend-emoji">🤔</span><span>Formulación de indicadores de evaluación</span></div>
+                <div class="legend-item"><span class="legend-emoji">🧩</span><span>Fundamentación de las decisiones pedagógicas</span></div>
+            </div>
+        </div>
+
+        <div class="card" id="tarea1-apartado-A">
+            <h3>A. Caracterización del curso</h3>
+            <div class="platform-prompt">En Plataforma Docentemás, complete la siguiente información:</div>
+            <div class="card-content">
+                
+                <p class="question-title">a. Contexto en el que trabaja:</p>
+                <div class="editable" contenteditable="true">Escuela Regular con Programa de Integración Escolar (PIE).</div>
+
+                <p class="question-title">b. Curso:</p>
+                <div class="editable" contenteditable="true">8º Básico A.</div>
+
+                <p class="question-title">c. Asignatura o núcleo:</p>
+                <div class="editable" contenteditable="true">Matemática.</div>
+
+                <p class="question-title">d. Objetivo Curricular:</p>
+                <div class="editable" contenteditable="true">💡 <span class="competente"><strong>OA 1 (Matemática 8º Básico):</strong> Mostrar que comprenden la multiplicación y la división de números enteros: representándolas de manera concreta, pictórica y simbólica; aplicando procedimientos usados en la multiplicación y la división de números naturales; aplicando la regla de los signos de la operación; resolviendo problemas rutinarios y no rutinarios.</span></div>
+                
+                <p class="question-title">e. Objetivo(s) Curricular(es) de carácter transversal:</p>
+                <div class="editable" contenteditable="true"><span class="competente"><strong>OAT (Dimensión Cognitiva-Intelectual):</strong> Resolver problemas de manera reflexiva en el ámbito escolar, familiar y social, tanto utilizando modelos y rutinas como aplicando de manera creativa conceptos y criterios.</span></div>
+
+                <p class="question-title">f. Describa al menos dos diferencias y dos aspectos en común que tienen los/as estudiantes...</p>
+                <div contenteditable="true" class="editable">
+                    <p>🧠 El 8° Básico A, compuesto por 18 estudiantes (8 niñas y 10 niños), se sitúa en un contexto rural con un alto Índice de Vulnerabilidad Escolar (87%). El curso se caracteriza por una marcada heterogeneidad que informa cada decisión pedagógica.</p>
+                    
+                    <p><strong>Diferencias Relevantes:</strong></p>
+                    <ol style="list-style-type: decimal; margin-left: 20px;">
+                        <li><span class="competente"><strong>Ritmos de Aprendizaje y Necesidades de Apoyo:</strong> El grupo se caracteriza por una notoria diversidad en sus ritmos de aprendizaje. Mientras un subgrupo asimila conceptos abstractos con rapidez, otro, que incluye a 7 estudiantes del Programa de Integración Escolar (PIE), requiere una mayor mediación pedagógica, andamiajes específicos y tiempos de trabajo diferenciados. Dentro de este último, destacan las necesidades particulares de un estudiante con Discapacidad Intelectual (DI), quien necesita monitoreo constante y material concreto; un estudiante con Funcionamiento Intelectual Limítrofe (FIL), con intereses marcados en el mundo agrícola; y un estudiante con Trastorno del Espectro Autista (TEA), quien, aunque no presenta dificultades académicas, requiere apoyo para la adecuada contextualización de las interacciones sociales.</span></li>
+                        <li><span class="competente"><strong>Contexto Sociofamiliar y Motivación:</strong> Se observa una marcada diferencia en cuanto al apoyo familiar. Un grupo de estudiantes cuenta con apoderados comprometidos, lo que se refleja en su responsabilidad y motivación. Por otro lado, un número significativo de estudiantes proviene de familias disfuncionales con bajo involucramiento, lo que frecuentemente se correlaciona con desafíos conductuales, una menor motivación escolar y dificultades en la autorregulación emocional, especialmente los días lunes.</span></li>
+                    </ol>
+
+                    <p><strong>Aspectos en Común:</strong></p>
+                    <ol style="list-style-type: decimal; margin-left: 20px;">
+                        <li><span class="competente"><strong>Estilos de Aprendizaje y Cultura Digital:</strong> La mayoría del estudiantado aprende de manera predominantemente <span class="competente">visual y auditiva</span>. Como grupo, comparten un alto interés y uso de la tecnología, principalmente el celular, lo que representa tanto una oportunidad para el uso de recursos digitales como un desafío en términos de supervisión y vocabulario.</span></li>
+                        <li><span class="competente"><strong>Etapa del Desarrollo:</strong> Todos los estudiantes están transitando por la adolescencia (la mayoría tiene 14 años). Dicha etapa se manifiesta en una tendencia al cuestionamiento, una variabilidad anímica recurrente y una marcada necesidad de que los aprendizajes sean significativos y conectados con sus realidades e intereses para captar su atención.</span></li>
+                    </ol>
+                    <p><span class="destacado">🚀 Esta diversidad, lejos de ser un obstáculo, enriquece el proceso educativo. Los variados intereses, como la agricultura o la cueca, se convierten en puentes para contextualizar aprendizajes abstractos, beneficiando a todo el curso. La necesidad de crear material visual y auditivo para un grupo específico nos impulsa a diseñar clases más dinámicas y universales, lo que finalmente eleva la calidad del aprendizaje para todos.</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2 -->
+    <div class="page-container">
+        <h2>B. Descripción de la implementación de tres experiencias de aprendizaje</h2>
+        
+        <h3>Experiencia de Aprendizaje 1: Introducción a los Números Enteros (Z)</h3>
+        <div class="card" id="experiencia-1">
+            <div class="platform-section-header">Objetivo(s) trabajado(s) en la experiencia de aprendizaje:</div>
+            <div class="card-content editable" contenteditable="true">Recordar el conjunto de números enteros (Z), representando situaciones cotidianas y buscando soluciones de manera creativa. (OA Transversal: Abordar de manera flexible y creativa la búsqueda de soluciones a problemas).</div>
+            
+            <div class="platform-section-header">🤔 Indicadores de evaluación:</div>
+            <div class="card-content editable">
+                <ul style="list-style-type: disc; margin-left: 20px;">
+                    <li>Representan números enteros en la recta numérica para resolver adiciones y sustracciones. (Grupo general)</li>
+                    <li>Utilizan material concreto (recta numérica de apoyo) para visualizar y resolver operaciones de adición y sustracción con números enteros. (Estudiantes PIE)</li>
+                    <li>Relacionan números enteros con al menos una situación de la vida cotidiana (temperaturas, deudas).</li>
+                </ul>
+            </div>
+
+            <div class="platform-section-header">Descripción de la implementación de experiencias de aprendizaje diversificadas y de las acciones de monitoreo:</div>
+            <div class="card-content editable">
+                <p>💡 <span class="competente">La clase inició con un juego motivacional proyectado en la pizarra sobre las variaciones de temperatura en Hualañé, para activar conocimientos previos de forma lúdica.</span> Tras presentar el objetivo, se realizó un diagnóstico rápido en la pizarra. La explicación del conjunto Z se centró en el uso de una recta numérica gigante. <span class="destacado">Para asegurar la comprensión universal, se utilizó la analogía de los números negativos como "deudas", un concepto concreto y cercano a su realidad.</span></p>
+                <p>💡 <span class="competente">Luego, los estudiantes trabajaron en parejas en una guía de adición y sustracción.</span> <span class="destacado">Como estrategia de diversificación (DUA), a todas las parejas se les entregó una recta numérica plastificada como material de apoyo visual y manipulable para resolver los ejercicios, respondiendo así a su estilo de aprendizaje predominante y a las necesidades de los estudiantes PIE.</span> Ambos docentes (profesora de matemática y yo) monitoreamos activamente, ofreciendo retroalimentación inmediata. La revisión se hizo en conjunto en la pizarra para consolidar el aprendizaje.</p>
+                <p>💡 Para el cierre, se solicitó que en parejas mencionaran situaciones de la vida cotidiana donde se usan números positivos y negativos, finalizando con preguntas de metacognición.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 3 -->
+    <div class="page-container">
+        <h3>Experiencia de Aprendizaje 2: Multiplicación y División en Z</h3>
+        <div class="card" id="experiencia-2">
+            <div class="platform-section-header">Objetivo(s) trabajado(s) en la experiencia de aprendizaje:</div>
+            <div class="card-content editable" contenteditable="true">Aplicar la regla de los signos en la multiplicación y división de números enteros, demostrando interés y perseverancia. (OA 1 - Matemática 8º)</div>
+            
+            <div class="platform-section-header">🤔 Indicadores de evaluación:</div>
+            <div class="card-content editable">
+                <ul style="list-style-type: disc; margin-left: 20px;">
+                    <li>Aplican correctamente la regla de los signos en ejercicios rutinarios de multiplicación y división.</li>
+                    <li>Resuelven multiplicaciones y divisiones utilizando las tablas de multiplicar como apoyo. (Estudiantes con DI y FIL)</li>
+                    <li>Completan el ticket de salida resolviendo al menos 3 de 4 operaciones propuestas.</li>
+                </ul>
+            </div>
+            
+            <div class="platform-section-header">Descripción de la implementación de experiencias de aprendizaje diversificadas y de las acciones de monitoreo:</div>
+            <div class="card-content editable">
+                <p>💡 <span class="destacado">La motivación se realizó a través de un juego interactivo en `educaplay.com`, donde todo el curso participó activamente, respondiendo al interés del grupo por la tecnología y el juego.</span> Tras el objetivo, se explicó la regla de los signos. <span class="competente">Para facilitar la memorización y aplicación, se entregó a cada estudiante una tarjeta plastificada con la "Tabla de la regla de los signos", un recurso de apoyo permanente (DUA).</span></p>
+                <p>💡 Se modelaron ejercicios en la pizarra. <span class="destacado">Reconociendo una barrera específica, se proporcionó a los estudiantes PIE (especialmente a aquellos con DI y FIL) tablas de multiplicar para que pudieran centrarse en la aplicación de la regla de los signos y no en el cálculo mental, que no era el foco del objetivo.</span></p>
+                <p>💡 La práctica individual se realizó con una guía, seguida de una revisión colectiva. <span class="competente">El cierre consistió en un ticket de salida con una operación de cada tipo (adición, sustracción, multiplicación y división) para evaluar formativamente y de manera rápida la comprensión de la distinción entre las reglas de signos de cada operatoria.</span></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PÁGINA 4 -->
+    <div class="page-container">
+        <h3>Experiencia de Aprendizaje 3: Resolución de Problemas con Números Enteros</h3>
+        <div class="card" id="experiencia-3">
+             <div class="platform-section-header">Objetivo(s) trabajado(s) en la experiencia de aprendizaje:</div>
+            <div class="card-content editable" contenteditable="true">Resolver problemas cotidianos que requieren la multiplicación y división de números enteros, trabajando de manera responsable y proactiva. (OA 1 - Matemática 8º)</div>
+
+            <div class="platform-section-header">🤔 Indicadores de evaluación:</div>
+            <div class="card-content editable">
+                <ul style="list-style-type: disc; margin-left: 20px;">
+                    <li>Aplican los pasos para la resolución de problemas (identificar datos, operación, respuesta) en situaciones dadas.</li>
+                    <li>Resuelven problemas de la vida cotidiana que involucran números enteros, utilizando la guía de aprendizaje con instrucciones simplificadas. (Estudiantes PIE)</li>
+                    <li>Retroalimentan a un compañero/a, identificando aciertos o errores en la resolución de un problema.</li>
+                </ul>
+            </div>
+           
+            <div class="platform-section-header">Descripción de la implementación de experiencias de aprendizaje diversificadas y de las acciones de monitoreo:</div>
+            <div class="card-content editable">
+                <p>💡 <span class="competente">Tras la motivación con un juego de tarjetas y un ticket de entrada, se explicaron los pasos para resolver problemas matemáticos.</span> Se modeló la resolución de tres problemas en conjunto.</p>
+                <p>💡 <span class="competente">Posteriormente, se entregó una guía individual.</span> <span class="destacado">Aquí la diversificación fue crucial: para los estudiantes PIE, la guía contenía los mismos problemas, pero con enunciados simplificados, eliminando información innecesaria que pudiera actuar como barrera para la comprensión lectora (DUA).</span></p>
+                <p>💡 <span class="destacado">Luego, se implementó una estrategia de coevaluación: en parejas, revisaron sus ejercicios, discutiendo los resultados y retroalimentándose mutuamente. Esta instancia promovió la colaboración y la argumentación.</span> Finalmente, en las mismas parejas, resolvieron problemas similares, aplicando lo aprendido y lo corregido. La clase concluyó con una revisión plenaria y la asignación de una tarea breve para la siguiente sesión, donde se volvería a usar la coevalu-acción.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 5 -->
+    <div class="page-container">
+        <h2>C. Fundamentación de las decisiones de diversificación y/o adecuación curricular</h2>
+        <div class="card" id="tarea1-apartado-C">
+            <div class="platform-prompt">¿Por qué las estrategias de enseñanza y/o monitoreo diversificadas que implementó responden a la heterogeneidad del curso descrito previamente?</div>
+            <div class="card-content">
+                <div contenteditable="true" class="editable">
+                    <p>🧩 Las estrategias de enseñanza y monitoreo implementadas responden directamente a la heterogeneidad del 8° Básico A, atendiendo tanto a sus diferencias como a sus aspectos comunes.</p>
+                    <p><span class="competente">En primer lugar, para abordar los <strong>distintos ritmos de aprendizaje y las NEE</strong> del grupo PIE, se aplicaron sistemáticamente principios del Diseño Universal para el Aprendizaje (DUA). La entrega de recursos de apoyo como la recta numérica (Exp. 1), la tabla con la regla de los signos y las tablas de multiplicar (Exp. 2) proporcionó múltiples medios de representación (Principio I del DUA), beneficiando el estilo de aprendizaje visual y concreto predominante y ofreciendo un andamiaje indispensable para los estudiantes con DI y FIL. De igual forma, la adecuación de la guía en la Experiencia 3, simplificando los enunciados para los estudiantes PIE, no disminuyó la exigencia matemática, sino que eliminó la barrera de la complejidad lingüística, permitiéndoles acceder al mismo desafío cognitivo que sus compañeros.</span></p>
+                    <p><span class="competente">En segundo lugar, para abordar la diversidad en el <strong>contexto sociofamiliar y la motivación variable</strong> del estudiantado, se utilizaron estrategias para aumentar el compromiso y la participación. La gamificación, a través del juego de temperaturas (Exp. 1) y la plataforma online (Exp. 2), conectó con el interés del grupo por la cultura digital y transformó el repaso en una actividad lúdica y de baja exigencia afectiva, especialmente importante para aquellos estudiantes que llegan desmotivados. La estrategia de trabajo en parejas y coevaluación (Exp. 3) fomentó la responsabilidad compartida y un ambiente de colaboración, ofreciendo una dinámica de aula positiva que contrarresta las dificultades que algunos traen de sus hogares.</span></p>
+                    <p><span class="destacado">🚀 Esta aproximación diversificada se fundamenta en un <strong>enfoque inclusivo</strong> que busca la equidad en el acceso y la participación. En lugar de crear actividades completamente distintas que podrían segregar, se mantuvo un núcleo de trabajo común, ofreciendo distintos niveles de apoyo y representación. Esta decisión se basa en la creencia de que valorar la diversidad implica reconocer que existen múltiples caminos para alcanzar un mismo objetivo. Al permitir que un estudiante use tablas de multiplicar o un enunciado simplificado, estamos validando su forma de aprender y comunicando altas expectativas, pues confiamos en que, con los apoyos adecuados, puede enfrentar el mismo desafío matemático que el resto. Esto no solo facilita el aprendizaje del contenido, sino que construye una comunidad de aula donde cada estudiante se siente capaz y respetado.</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="final-note">
+            <p><strong>Nota para el docente:</strong> Este borrador incluye guías visuales. Los textos en <span class="competente">azul</span> apuntan a 'Competente' y en <span class="destacado">verde</span> a 'Destacado'. Los emojis (🧠, 💡, etc.) señalan indicadores. Recuerde eliminar todas estas guías y esta nota antes de copiar el texto final a la plataforma DocenteMás.</p>
+        </div>
+    </div>
+
+    <script>
+        function saveProgress() {
+            const editableElements = document.querySelectorAll('[contenteditable="true"]');
+            const dataToSave = {};
+            editableElements.forEach((el, index) => {
+                const id = el.closest('.card')?.id || `editable-t1-${index}`;
+                dataToSave[id] = el.innerHTML;
+            });
+            localStorage.setItem('portfolio_content_M1T1_Formal_v2', JSON.stringify(dataToSave));
+            alert('¡Tu avance ha sido guardado en el navegador!');
+        }
+
+        function loadProgress() {
+            const savedData = JSON.parse(localStorage.getItem('portfolio_content_M1T1_Formal_v2'));
+            if (!savedData) return;
+            
+            const editableElements = document.querySelectorAll('[contenteditable="true"]');
+            editableElements.forEach((el, index) => {
+                const id = el.closest('.card')?.id || `editable-t1-${index}`;
+                if (savedData[id]) {
+                    el.innerHTML = savedData[id];
+                }
+            });
+        }
+        window.onload = loadProgress;
+    </script>
+</body>
+</html>
+

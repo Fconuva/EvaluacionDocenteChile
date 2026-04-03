@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Trabajo - Misión Reciclaje Aéreo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .roboto-slab {
+            font-family: 'Roboto Slab', serif;
+        }
+        .worksheet-container {
+            max-width: 8.5in;
+            min-height: 11in;
+            margin: 1rem auto;
+            background-color: white;
+            border: 1px solid #d1d5db;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .section {
+            margin-bottom: 1.5rem;
+        }
+        .step-box {
+            background-color: #eff6ff;
+            border: 1px solid #93c5fd;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        .input-line {
+            border-bottom: 1px dotted #6b7280;
+            padding-bottom: 2px;
+            min-width: 200px;
+            display: inline-block;
+        }
+        @media print {
+            body { background-color: white; }
+            .worksheet-container { box-shadow: none; border: none; margin: 0; padding: 1rem; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="worksheet-container">
+        <div class="header">
+            <h1 class="text-2xl font-bold roboto-slab text-gray-800">Ficha de Trabajo: Misión Reciclaje Aéreo ♻️🏐</h1>
+            <p class="text-gray-600">Educación Física y Salud - 5° Básico A</p>
+        </div>
+
+        <div class="mb-4">
+            <label for="student-name" class="font-semibold">Nombre:</label>
+            <span id="student-name" class="input-line ml-2"></span>
+        </div>
+
+        <!-- Sección 1: Recordatorio Técnico -->
+        <div class="section">
+            <h2 class="text-lg font-bold roboto-slab text-blue-700 mb-3">Los 3 Momentos del Toque de Dedos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="step-box">
+                    <p class="text-2xl mb-2">①</p>
+                    <p class="font-semibold">POSTURA</p>
+                    <p class="text-sm">Rodillas flectadas, manos como un diamante sobre la frente.</p>
+                </div>
+                <div class="step-box">
+                    <p class="text-2xl mb-2">②</p>
+                    <p class="font-semibold">CONTACTO</p>
+                    <p class="text-sm">Recibes el balón con la yema de los dedos.</p>
+                </div>
+                <div class="step-box">
+                    <p class="text-2xl mb-2">③</p>
+                    <p class="font-semibold">EMPUJE</p>
+                    <p class="text-sm">Extiendes brazos y piernas al mismo tiempo. ¡Como un resorte!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 2: Puntuación de la Misión -->
+        <div class="section">
+            <h2 class="text-lg font-bold roboto-slab text-blue-700 mb-3">Puntuación de mi Equipo</h2>
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <p>Anota aquí los puntos que lograron como equipo en la "Misión Reciclaje Aéreo".</p>
+                <p class="mt-2"><strong>Puntos por aciertos:</strong> <span class="input-line"></span></p>
+                <p class="mt-2"><strong>Puntos por Juego Limpio:</strong> <span class="input-line"></span></p>
+                <p class="mt-2 font-bold text-lg"><strong>¡TOTAL:</strong> <span class="input-line"></span><strong>!</strong></p>
+            </div>
+        </div>
+
+        <!-- Sección 3: Check-out Rápido (Reflexión) -->
+        <div class="section flex-grow flex flex-col">
+            <h2 class="text-lg font-bold roboto-slab text-blue-700 mb-3">Mi Check-out Rápido 🧠</h2>
+            <div class="bg-gray-50 p-4 rounded-lg flex-grow flex flex-col">
+                <div class="mb-4 flex-grow">
+                    <p class="font-semibold"><strong>1. Lo más desafiante para mí fue:</strong></p>
+                    <div class="w-full h-12 mt-1 p-2 border rounded bg-white"></div>
+                </div>
+                <div class="mb-4 flex-grow">
+                    <p class="font-semibold"><strong>2. Para superarlo, intenté:</strong></p>
+                    <div class="w-full h-12 mt-1 p-2 border rounded bg-white"></div>
+                </div>
+                <div class="flex-grow">
+                    <p class="font-semibold"><strong>3. El trabajo en equipo nos ayudó a:</strong></p>
+                    <div class="w-full h-12 mt-1 p-2 border rounded bg-white"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="text-center mt-4 mb-8 no-print">
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300">
+            Imprimir Ficha
+        </button>
+    </div>
+
+</body>
+</html>

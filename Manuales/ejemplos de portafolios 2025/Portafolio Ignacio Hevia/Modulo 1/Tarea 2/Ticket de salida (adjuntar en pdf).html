@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket de Salida - Mi Clase de Voleibol</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f9ff;
+        }
+        h1, h2 {
+            font-family: 'Roboto Slab', serif;
+        }
+        .ticket-area {
+            background-color: white;
+            border: 2px dashed #9ca3af;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .emoji-options span {
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .emoji-options span:hover {
+            transform: scale(1.2);
+        }
+        textarea {
+            resize: none;
+        }
+        @media print {
+            body { background-color: white; }
+            .no-print { display: none; }
+            .ticket-area { box-shadow: none; border: 2px solid #6b7280; }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="container mx-auto max-w-2xl ticket-area">
+        <header class="text-center mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">🎟️ Ticket de Salida</h1>
+            <h2 class="text-lg text-blue-700">Mi Clase de Voleibol</h2>
+        </header>
+
+        <div class="space-y-6">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">Nombre:</label>
+                <input type="text" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Escribe tu nombre aquí...">
+            </div>
+
+            <!-- Pregunta 1: Autoevaluación -->
+            <div>
+                <p class="text-gray-700 font-semibold mb-2">1. ¿Cómo te sentiste hoy con la técnica del "toque de dedos"? Marca la cara que mejor te represente.</p>
+                <div class="flex justify-around items-center p-4 bg-gray-50 rounded-lg emoji-options">
+                    <span>😞</span>
+                    <span>😐</span>
+                    <span>🙂</span>
+                    <span>😀</span>
+                </div>
+            </div>
+
+            <!-- Pregunta 2: Metacognición -->
+            <div>
+                <p class="text-gray-700 font-semibold mb-2">2. ¿Qué fue lo más difícil para ti en la clase de hoy? ¿Por qué?</p>
+                <textarea rows="3" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Empujar la pelota con fuerza, porque..."></textarea>
+            </div>
+
+            <!-- Pregunta 3: Seguridad -->
+            <div>
+                <p class="text-gray-700 font-semibold mb-2">3. Nombra una regla de seguridad que usamos hoy para cuidarnos entre todos.</p>
+                <textarea rows="2" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Dejar las mochilas en un lugar seguro..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-8 no-print">
+        <button onclick="window.print()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300">
+            Imprimir Tickets
+        </button>
+    </div>
+
+</body>
+</html>

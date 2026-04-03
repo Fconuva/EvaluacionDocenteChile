@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pauta de Cotejo - Toque de Dedos y Seguridad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f5;
+        }
+        h1, h2 {
+            font-family: 'Roboto Slab', serif;
+        }
+        .printable-area {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .editable-cell {
+            cursor: text;
+        }
+        .editable-cell:focus {
+            background-color: #eff6ff;
+            outline: 1px solid #3b82f6;
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .no-print {
+                display: none;
+            }
+            .printable-area {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body class="p-8">
+
+    <div class="container mx-auto printable-area">
+        <header class="text-center mb-8 border-b pb-4">
+            <h1 class="text-2xl font-bold text-gray-800">Pauta de Cotejo: Observación Formativa</h1>
+            <h2 class="text-lg text-blue-700">Experiencia de Aprendizaje: "Toque de Dedos y Seguridad"</h2>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-sm">
+            <p><strong>Docente:</strong> Ignacio José Hevia Torres</p>
+            <p><strong>Curso:</strong> 5° Básico A</p>
+            <p><strong>Fecha:</strong> [26 de Agosto, 2025]</p>
+        </div>
+        <p class="mb-6 text-sm"><strong>OA Curricular:</strong> OA11 - Practicar actividades físicas demostrando comportamientos seguros.</p>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="py-2 px-4 border-b font-semibold text-left">N°</th>
+                        <th class="py-2 px-4 border-b font-semibold text-left">Estudiante</th>
+                        <th class="py-2 px-4 border-b font-semibold text-center" title="Realiza calentamiento específico">Ind. 1<br>(Calent.)</th>
+                        <th class="py-2 px-4 border-b font-semibold text-center" title="Manipula implementos de forma segura">Ind. 2<br>(Segur.)</th>
+                        <th class="py-2 px-4 border-b font-semibold text-center" title="Aplica técnica de toque de dedos">Ind. 3<br>(Técnica)</th>
+                        <th class="py-2 px-4 border-b font-semibold text-center" title="Colabora con su equipo">Ind. 4<br>(Colab.)</th>
+                        <th class="py-2 px-4 border-b font-semibold text-left">Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody id="student-table-body">
+                    <!-- Las filas de estudiantes se generarán con JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center mt-4 no-print">
+             <button onclick="addRow()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-1 px-3 rounded-lg text-sm transition duration-300">
+                + Agregar Fila
+            </button>
+        </div>
+    </div>
+
+    <div class="text-center mt-8 no-print">
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300">
+            Imprimir Pauta
+        </button>
+    </div>
+    
+    <script>
+        const tableBody = document.getElementById('student-table-body');
+        let studentCount = 0;
+
+        function createRow(studentData = { name: '[Click para editar]', ind1: false, ind2: false, ind3: false, ind4: false, obs: '' }) {
+            studentCount++;
+            const row = document.createElement('tr');
+            row.className = 'hover:bg-gray-50';
+            row.innerHTML = `
+                <td class="py-2 px-4 border-b">${studentCount}</td>
+                <td class="py-2 px-4 border-b editable-cell" contenteditable="true">${studentData.name}</td>
+                <td class="py-2 px-4 border-b text-center"><input type="checkbox" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" ${studentData.ind1 ? 'checked' : ''}></td>
+                <td class="py-2 px-4 border-b text-center"><input type="checkbox" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" ${studentData.ind2 ? 'checked' : ''}></td>
+                <td class="py-2 px-4 border-b text-center"><input type="checkbox" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" ${studentData.ind3 ? 'checked' : ''}></td>
+                <td class="py-2 px-4 border-b text-center"><input type="checkbox" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" ${studentData.ind4 ? 'checked' : ''}></td>
+                <td class="py-2 px-4 border-b editable-cell" contenteditable="true">${studentData.obs}</td>
+            `;
+            tableBody.appendChild(row);
+        }
+        
+        function addRow() {
+             createRow();
+        }
+
+        const initialStudents = [
+            { name: 'Martina Alarcón', ind1: true, ind2: true, ind3: true, ind4: true, obs: 'Excelente ejecución y demuestra liderazgo positivo al animar a su pareja.' },
+            { name: 'Benjamín Soto', ind1: true, ind2: true, ind3: false, ind4: true, obs: 'Logra buena postura base, pero le cuesta coordinar el empuje con las piernas. Recordar la extensión completa.' },
+            { name: 'Sofía Castro (PIE)', ind1: true, ind2: true, ind3: false, ind4: false, obs: 'Dificultad en la postura de las manos (formar el rombo). Se le entregó balón de esponja y trabajó contra la pared. Se distrae en el trabajo en equipo.' },
+            { name: 'Lucas Valdés', ind1: true, ind2: true, ind3: true, ind4: true, obs: 'Muy buena técnica, pero a veces se olvida de flectar las rodillas antes del contacto. Retroalimentar sobre la postura base.' },
+            { name: 'Isidora Reyes', ind1: true, ind2: false, ind3: false, ind4: true, obs: 'Deja el balón rodando en una ocasión, se le recuerda la norma de seguridad. Muestra frustración con la técnica, requiere apoyo emocional.' }
+        ];
+
+        // Generar filas iniciales con ejemplos
+        initialStudents.forEach(student => createRow(student));
+
+        // Generar filas vacías adicionales hasta completar un número mayor
+        for (let i = initialStudents.length; i < 40; i++) {
+            createRow();
+        }
+    </script>
+
+</body>
+</html>

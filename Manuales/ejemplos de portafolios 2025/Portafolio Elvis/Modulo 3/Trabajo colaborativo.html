@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 3: Trabajo Colaborativo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f0f4f8; }
+        h1, h2, h3, h4 { font-family: 'Roboto Slab', serif; }
+        .editable { border: 1px solid #cbd5e1; padding: 0.75rem; border-radius: 0.5rem; background-color: white; min-height: 100px; transition: all 0.3s; text-align: justify; }
+        .editable:focus { outline: none; border-color: #4f46e5; box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2); }
+        .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+        .label-title { font-weight: 500; color: #1e3a8a; margin-bottom: 0.5rem; display: block; }
+        .char-counter { font-size: 0.75rem; color: #64748b; text-align: right; margin-top: 0.25rem; }
+        .competente { color: #1d4ed8; font-weight: bold; }
+        .destacado { color: #166534; font-weight: bold; }
+        .btn { padding: 0.5rem 1rem; border-radius: 0.5rem; color: white; font-weight: 500; cursor: pointer; transition: background-color 0.3s; }
+        .btn-save { background-color: #4f46e5; }
+        .btn-save:hover { background-color: #4338ca; }
+        .btn-pdf { background-color: #be123c; }
+        .btn-pdf:hover { background-color: #9f1239; }
+        .legend { background-color: #eef2ff; border-left: 4px solid #4f46e5; padding: 1rem; border-radius: 0.5rem; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        #toast { position: fixed; top: 1.25rem; right: 1.25rem; background-color: #22c55e; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); opacity: 0; transition: opacity 0.3s; }
+        .section-title { font-size: 1.125rem; font-weight: bold; color: #4338ca; border-top: 1px solid #e5e7eb; padding-top: 1rem; margin-top: 2rem; }
+        .question-block { margin-bottom: 2rem; }
+        @media print {
+            body { background-color: white; }
+            .no-print { display: none; }
+            .card { box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+            .editable { border: none; padding: 0; }
+            h1, h2, h3, h4 { page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8 no-print">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Portafolio Docente 2025</h1>
+            <p class="text-lg text-gray-600">Elvis Sepúlveda Fuentes</p>
+        </div>
+        
+        <div class="flex justify-center space-x-4 mb-8 no-print">
+            <button id="saveButton" class="btn btn-save">Guardar Avance</button>
+            <button onclick="window.print()" class="btn btn-pdf">Descargar en PDF</button>
+        </div>
+        <div id="toast" class="no-print">¡Avance guardado con éxito!</div>
+
+        <!-- MÓDULO 3 -->
+        <div class="card">
+            <h2 class="text-2xl font-bold text-indigo-700 border-b-2 border-indigo-200 pb-2 mb-6">Módulo 3: Trabajo colaborativo y desarrollo profesional de excelencia</h2>
+
+            <div class="legend">
+                <p><b>Leyenda de Guías Visuales:</b></p>
+                <p><span class="competente">Texto en azul y negrita</span>: Elementos que apuntan al nivel 'Competente'.</p>
+                <p><span class="destacado">Texto en verde y negrita</span>: Elementos que añaden complejidad para el nivel 'Destacado'.</p>
+                <p><b>Emojis:</b> 🎯(Relevancia del problema), 🔍(Reflexión basada en evidencia), 💬(Diálogo conjunto), 🌱(Aprendizajes profesionales), 💡(Reflexión sobre creencias).</p>
+            </div>
+
+            <div class="question-block">
+                <span class="label-title">Indique si presentará la parte VOLUNTARIA del Módulo 3:</span>
+                <div class="flex items-center space-x-4">
+                    <label><input type="radio" name="voluntaria" value="si" checked> SÍ presentaré la parte voluntaria.</label>
+                    <label><input type="radio" name="voluntaria" value="no"> NO presentaré la parte voluntaria.</label>
+                </div>
+            </div>
+
+            <h3 class="section-title">Información General (OBLIGATORIA)</h3>
+             <div class="question-block">
+                <span class="label-title">a. Señale el establecimiento educativo en el que se desarrolla o desarrolló la experiencia:</span>
+                <div class="editable" contenteditable="true" data-maxlength="1000" data-key="info_establecimiento">La experiencia de trabajo colaborativo se desarrolló en el Liceo Bicentenario Enrique Berteins Carabantes, ubicado en la comuna de Paine. Involucró una colaboración interdisciplinaria entre el departamento de la especialidad Agropecuaria y el departamento de Lenguaje y Comunicación.</div>
+                <div class="char-counter">0/1000</div>
+            </div>
+             <div class="question-block">
+                <span class="label-title">b. Año(s) en que se desarrolló la experiencia relatada:</span>
+                <div>
+                    <label><input type="radio" name="ano_exp" value="2023"> 2023</label>
+                    <label><input type="radio" name="ano_exp" value="2024"> 2024</label>
+                    <label><input type="radio" name="ano_exp" value="2025" checked> 2025</label>
+                </div>
+            </div>
+
+            <h3 class="section-title">A. Origen e implementación de una experiencia de trabajo colaborativo</h3>
+            <div class="question-block">
+                <span class="label-title">A.1 Relevancia del problema, interés o necesidad abordada (OBLIGATORIA)</span>
+                <div class="editable" contenteditable="true" data-maxlength="2000" data-key="a1_relevancia">
+                    <p>🎯 <span class="competente">La problemática que motivó nuestro trabajo colaborativo fue la notoria dificultad de los estudiantes de la especialidad TP para redactar informes técnicos formales sobre los procedimientos de postcosecha. El interés era superar esta falencia para que pudieran comunicar sus hallazgos de manera profesional.</span> <span class="destacado">La relevancia de abordar este problema es multidimensional y crítica para su futuro. En primer lugar, impacta directamente en su empleabilidad; un técnico que solo sabe ejecutar pero no puede documentar, analizar y comunicar sus resultados de forma fiable, queda relegado a roles operativos básicos. En la industria agroexportadora de Paine, la trazabilidad y los reportes de calidad son fundamentales, y un informe mal redactado puede significar el rechazo de un contenedor completo de fruta, con graves pérdidas económicas. Por tanto, esta habilidad no es un complemento, sino una competencia laboral esencial. En segundo lugar, abordarlo es un acto de equidad: les entrega una herramienta de poder y agencia profesional, permitiéndoles participar en la toma de decisiones basadas en la evidencia que ellos mismos generan.</span></p>
+                </div>
+                <div class="char-counter">0/2000</div>
+            </div>
+
+            <div class="question-block">
+                <span class="label-title">A.1.1 Reflexión sobre las necesidades profesionales a partir de la evidencia del aprendizaje (VOLUNTARIA)</span>
+                <div class="editable" contenteditable="true" data-maxlength="3600" data-key="a11a_evidencia">
+                   <p>🔍 <span class="destacado">La evidencia principal que analizamos fueron los informes de laboratorio que los estudiantes entregaron tras la actividad de medición de grados Brix. Los resultados fueron decidores: aunque la mayoría había realizado bien el procedimiento práctico, los informes escritos presentaban debilidades generalizadas: lenguaje coloquial ("el jugo estaba dulce"), falta de estructura, datos presentados sin unidades de medida y conclusiones subjetivas sin respaldo en la evidencia numérica ("creo que el lote B es mejor"). Otra evidencia fue el registro anecdótico durante el monitoreo en clases, donde notamos que, al preguntarles por sus conclusiones, respondían con monosílabos o frases incompletas, evidenciando una dificultad no solo en la escritura, sino también en la articulación verbal de ideas técnicas. Interpretamos esto no como una falta de conocimiento técnico, sino como una desconexión total entre la acción práctica y la comunicación formal de esa acción. Concluimos que necesitábamos desarrollar en ellos una competencia comunicativa específica para el ámbito técnico, que hasta ahora no estábamos abordando de manera explícita.</span></p>
+                </div>
+                <div class="char-counter">0/3600</div>
+                 <div class="editable mt-4" contenteditable="true" data-maxlength="3600" data-key="a11b_necesidades">
+                   <p>🔍 <span class="destacado">A la luz de este análisis, concluimos que como equipo de la especialidad TP necesitábamos desarrollar nuestra propia capacidad para enseñar a escribir técnicamente. Reconocimos que, como profesionales del área agrícola, dominábamos el "qué" (el contenido técnico) pero nos faltaban las herramientas didácticas para enseñar el "cómo" comunicarlo eficazmente por escrito. Nuestra necesidad profesional no era tomar un curso de gramática, sino aprender estrategias para modelar la escritura técnica, crear instrumentos de evaluación para informes (rúbricas) y, fundamentalmente, integrar la escritura como una parte inherente y evaluada de cada actividad práctica, en lugar de verla como una tarea accesoria o exclusiva del área de Lenguaje.</span></p>
+                </div>
+                <div class="char-counter">0/3600</div>
+            </div>
+
+            <div class="question-block">
+                <span class="label-title">A.2 Reflexión conjunta a través del diálogo (OBLIGATORIA)</span>
+                <div class="editable" contenteditable="true" data-maxlength="5000" data-key="a2_dialogo">
+                    <p>💬 <span class="competente">Para abordar la problemática, iniciamos un diálogo reflexivo entre los docentes de la especialidad Agropecuaria y un colega del departamento de Lenguaje. La discusión inicial se centró en distintas hipótesis sobre el problema. Algunos argumentaban que los estudiantes "no leen lo suficiente", mientras otros planteaban que quizás la dificultad radicaba en la falta de práctica.</span> <span class="destacado">Sin embargo, la conversación se profundizó cuando un colega preguntó: "¿Y nosotros, como profes TP, les estamos enseñando a escribir? ¿O asumimos que eso 'lo traen' de Lenguaje?". Esta pregunta fue clave y nos llevó a cuestionar nuestras propias prácticas y creencias. Reconocimos que tendíamos a enfocarnos casi exclusivamente en la ejecución procedimental, evaluando el resultado práctico (la medición correcta) pero no el registro formal del mismo. Consideramos varias alternativas: la primera, más simple, era crear una plantilla de informe y hacer que la llenaran. Sin embargo, el profesor de Lenguaje argumentó que eso fomentaría un aprendizaje superficial. Propuso una segunda alternativa: un trabajo interdisciplinario donde él nos aportaría la estructura del texto argumentativo (tesis, evidencia, conclusión) y nosotros la adaptaríamos al contexto técnico. Hubo un consenso en que esta era la vía más formativa. Decidimos, por tanto, co-diseñar una rúbrica y una secuencia de actividades donde la escritura del informe fuera un objetivo de aprendizaje tan importante como la medición misma.</span></p>
+                </div>
+                <div class="char-counter">0/5000</div>
+            </div>
+
+            <h3 class="section-title">B. Aprendizajes profesionales a partir de la experiencia de trabajo colaborativo</h3>
+             <div class="question-block">
+                <span class="label-title">B.1 Aprendizajes profesionales para la práctica pedagógica (OBLIGATORIA)</span>
+                <div class="editable" contenteditable="true" data-maxlength="3600" data-key="b1a_aprendizaje">
+                   <p>🌱 <span class="competente">Mi principal aprendizaje profesional fue comprender que la formación de un técnico integral exige que yo, como docente de especialidad, asuma también un rol como formador en competencias comunicativas. Aprendí a diseñar actividades donde la escritura no es un anexo, sino el cierre lógico y necesario del proceso práctico.</span> <span class="destacado">Concretamente, ahora en mi práctica, después de cada actividad de laboratorio, dedico 20 minutos a la "Mesa de Redacción". En este bloque, los estudiantes deben escribir un párrafo de conclusión técnica. Por ejemplo, tras una medición de firmeza de manzanas, ya no basta con el dato; deben redactar: "Se concluye que el lote presenta una firmeza promedio de 16 lbs, cumpliendo el estándar para guarda en frío, según la pauta de la exportadora X". Este cambio ha transformado mis clases; ahora son talleres completos de competencia profesional. Aprendí también a crear rúbricas sencillas para evaluar estos textos, centrándome en la claridad, el uso de datos y el vocabulario técnico.</span></p>
+                </div>
+                <div class="char-counter">0/3600</div>
+                 <div class="editable mt-4" contenteditable="true" data-maxlength="3600" data-key="b1b_repercusion">
+                   <p>🌱 <span class="competente">Esta nueva práctica ha tenido una repercusión directa y muy positiva en mis estudiantes. He observado un aumento en su confianza y en la seriedad con que abordan el registro de datos. Entienden que la información que generan tiene un propósito real.</span> <span class="destacado">Un ejemplo concreto fue el de una estudiante haitiana con dificultades en el español escrito, quien, gracias a la estructura y la rúbrica, logró por primera vez redactar un informe coherente y bien fundamentado, lo que fue un logro inmenso para su autoestima académica. A nivel de curso, la calidad general de los informes ha mejorado drásticamente, lo cual los prepara de manera mucho más sólida para sus prácticas profesionales y futuro laboral.</span></p>
+                </div>
+                <div class="char-counter">0/3600</div>
+            </div>
+
+            <div class="question-block">
+                <span class="label-title">B.2 Reflexión sobre sus creencias pedagógicas (VOLUNTARIA)</span>
+                <div class="editable" contenteditable="true" data-maxlength="5000" data-key="b2_creencias">
+                   <p>💡 <span class="destacado">Este trabajo colaborativo interpeló directamente una creencia pedagógica que yo tenía muy arraigada: "En la formación técnica, lo que realmente importa es que el estudiante sepa 'hacer con las manos'; la escritura es secundaria y corresponde a los profesores de Lenguaje". Esta creencia se manifestaba en mi práctica al dedicar el 95% del tiempo de taller a la ejecución y solo un 5% a un registro rápido, a menudo incompleto. El proceso de diálogo con mi colega de Lenguaje y el ver la pobre calidad de los informes de mis estudiantes me obligó a cuestionar esta idea. Comprendí que esta creencia estaba, en realidad, limitando el desarrollo profesional de mis estudiantes. El proceso de cuestionamiento se intensificó al diseñar la rúbrica conjunta, donde tuve que verbalizar qué constituía una "buena" conclusión técnica, dándome cuenta de que implicaba habilidades de argumentación y análisis que yo no estaba enseñando. Hoy, mi creencia se ha transformado: "Mi rol como docente TP es enseñar la competencia profesional completa, y esta es una simbiosis inseparable entre la acción técnica y la capacidad de comunicarla con precisión, formalidad y fundamento".</span></p>
+                </div>
+                <div class="char-counter">0/5000</div>
+            </div>
+
+        </div>
+
+        <div class="card mt-8 no-print">
+            <p class="text-sm text-red-700 font-semibold">Nota para el docente:</p>
+            <p class="text-sm text-gray-600">Este borrador incluye guías visuales para facilitar tu revisión. Los textos en <span class="competente">azul</span> apuntan al nivel 'Competente' y los en <span class="destacado">verde</span> al 'Destacado'. Los emojis (🎯, 🔍, etc.) señalan indicadores específicos. Recuerda eliminar todas estas guías (colores, negritas especiales, emojis y esta nota) antes de copiar el texto final a la plataforma DocenteMás.</p>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const editables = document.querySelectorAll('.editable');
+        editables.forEach(div => {
+            const key = `tarea3_${div.dataset.key}`;
+            const savedContent = localStorage.getItem(`portafolio_${key}`);
+            if (savedContent) { div.innerHTML = savedContent; }
+            updateCharCounter(div);
+            div.addEventListener('input', () => updateCharCounter(div));
+        });
+
+        function updateCharCounter(div) {
+            const maxLength = parseInt(div.dataset.maxlength, 10);
+            const currentLength = div.textContent.length;
+            const counter = div.nextElementSibling;
+            if (counter && counter.classList.contains('char-counter')) {
+                counter.textContent = `${currentLength}/${maxLength}`;
+                counter.style.color = currentLength > maxLength ? '#dc2626' : '#64748b';
+            }
+        }
+
+        const saveButton = document.getElementById('saveButton');
+        const toast = document.getElementById('toast');
+        saveButton.addEventListener('click', () => {
+            editables.forEach(div => {
+                const key = `tarea3_${div.dataset.key}`;
+                localStorage.setItem(`portafolio_${key}`, div.innerHTML);
+            });
+            toast.classList.remove('opacity-0');
+            setTimeout(() => { toast.classList.add('opacity-0'); }, 2000);
+        });
+    });
+</script>
+
+</body>
+</html>

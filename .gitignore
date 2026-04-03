@@ -1,0 +1,19 @@
+﻿# Datos sensibles de clientes (PII)
+Manuales/CLIENTES/
+export_completo.json
+firebase-users.json
+
+# PDFs originales (muy pesados, mantener solo los extractos .txt)
+Manuales/DOCUMENTACION/*.pdf
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+*.tmp

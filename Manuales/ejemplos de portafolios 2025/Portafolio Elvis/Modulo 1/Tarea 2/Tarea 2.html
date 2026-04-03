@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Tarea 2 - Evaluación Formativa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f0f4f8; }
+        h1, h2, h3, h4 { font-family: 'Roboto Slab', serif; }
+        .editable { border: 1px solid #cbd5e1; padding: 0.75rem; border-radius: 0.5rem; background-color: white; min-height: 100px; transition: all 0.3s; text-align: justify; }
+        .editable:focus { outline: none; border-color: #4f46e5; box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2); }
+        .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+        .label-title { font-weight: 500; color: #1e3a8a; margin-bottom: 0.5rem; }
+        .char-counter { font-size: 0.75rem; color: #64748b; text-align: right; margin-top: 0.25rem; }
+        .competente { color: #1d4ed8; font-weight: bold; }
+        .destacado { color: #166534; font-weight: bold; }
+        .btn { padding: 0.5rem 1rem; border-radius: 0.5rem; color: white; font-weight: 500; cursor: pointer; transition: background-color 0.3s; }
+        .btn-save { background-color: #4f46e5; }
+        .btn-save:hover { background-color: #4338ca; }
+        .btn-pdf { background-color: #be123c; }
+        .btn-pdf:hover { background-color: #9f1239; }
+        .legend { background-color: #eef2ff; border-left: 4px solid #4f46e5; padding: 1rem; border-radius: 0.5rem; font-size: 0.9rem; }
+        #toast { position: fixed; top: 1.25rem; right: 1.25rem; background-color: #22c55e; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); opacity: 0; transition: opacity 0.3s; }
+        @media print {
+            body { background-color: white; }
+            .no-print { display: none; }
+            .card { box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+            .editable { border: none; padding: 0; }
+            h1, h2, h3 { page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8 no-print">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Portafolio Docente 2025</h1>
+            <p class="text-lg text-gray-600">Elvis Sepúlveda Fuentes</p>
+        </div>
+        
+        <div class="flex justify-center space-x-4 mb-8 no-print">
+            <button id="saveButton" class="btn btn-save">Guardar Avance</button>
+            <button onclick="window.print()" class="btn btn-pdf">Descargar en PDF</button>
+        </div>
+        <div id="toast" class="no-print">¡Avance guardado con éxito!</div>
+
+        <!-- MÓDULO 1 TAREA 2 -->
+        <div class="card">
+            <h2 class="text-2xl font-bold text-indigo-700 border-b-2 border-indigo-200 pb-2 mb-6">Módulo 1: Tarea 2</h2>
+            <h3 class="text-xl font-bold text-gray-700 mb-6">Evaluación formativa</h3>
+
+            <!-- SECCIÓN A -->
+            <div id="seccionA" class="mb-8">
+                <h4 class="text-lg font-bold text-gray-600 mb-4">A. Estrategia de monitoreo del aprendizaje</h4>
+                <div class="legend mb-6">
+                    <p><b>Leyenda:</b> <span class="competente">Competente</span> | <span class="destacado">Destacado</span> | Emojis: 📊(Análisis), 🎯(Decisiones), 🧠(Causas)</p>
+                </div>
+                
+                <p class="label-title">Indicadores de evaluación:</p>
+                <div class="editable mb-4" contenteditable="true" data-maxlength="1000" data-key="indicadores_eval">
+                  <span class="competente">1. Calibra el refractómetro utilizando agua destilada y ajustando a cero.</span><br>
+                  <span class="competente">2. Extrae una muestra de jugo de naranja y la deposita correctamente en el prisma del instrumento.</span><br>
+                  <span class="competente">3. Realiza la lectura de los grados Brix observando a través del ocular.</span><br>
+                  <span class="competente">4. Limpia el prisma del refractómetro después de cada medición.</span><br>
+                  <span class="destacado">5. Interpreta el valor obtenido y lo compara con el estándar de calidad (12° Brix) para determinar si el lote es apto para exportación.</span>
+                </div>
+                <div class="char-counter">0/1000</div>
+
+                <p class="label-title">Descripción de la actividad para monitorear los aprendizajes de sus estudiantes:</p>
+                <div class="editable mb-4" contenteditable="true" data-maxlength="3500" data-key="desc_actividad_monitoreo">
+                    <p class="mb-2"><span class="competente">Para recoger evidencia sobre los indicadores, implementé una estrategia de monitoreo directo durante la actividad práctica de la Experiencia de Aprendizaje 2, donde los estudiantes, en parejas, debían medir los grados Brix de dos lotes de naranjas. Utilicé una pauta de cotejo (ver Recurso Adjunto 1) para registrar el desempeño de cada pareja.</span></p>
+                    <p class="mb-2"><span class="competente">Mientras trabajaban, circulé activamente por cada puesto de trabajo, observando la ejecución de los 5 pasos clave del procedimiento. Me enfoqué en si realizaban la calibración antes de la primera medición, la correcta aplicación de la muestra de jugo, y, muy importante, si limpiaban el instrumento entre la medición de una fruta y otra para evitar la contaminación de la muestra. Realicé preguntas de andamiaje como: "¿Qué pasaría si no limpiamos el prisma entre una naranja y la siguiente?", "¿Estás seguro de que está en cero antes de empezar?".</span></p>
+                    <p><span class="destacado">Para diversificar la forma en que los estudiantes demostraban su aprendizaje, a las parejas que terminaban primero y correctamente, les pedía que explicaran oralmente la importancia de su rol como analistas de calidad, mientras que a las parejas que incluían estudiantes con NEE les ofrecí apoyo más cercano, modelando nuevamente el paso en que presentaban dificultad y pidiéndoles que ellos me lo explicaran a mí con sus palabras o con gestos, ofreciendo así una alternativa a la ejecución autónoma para demostrar comprensión. La evidencia sobre el indicador 5, de nivel superior, la recogí principalmente a través del Ticket de Salida (ver Recurso Adjunto 2), que les pedía tomar una decisión fundamentada.</span></p>
+                </div>
+                 <div class="char-counter">0/3500</div>
+            </div>
+
+            <!-- SECCIÓN B -->
+            <div id="seccionB">
+                <h4 class="text-lg font-bold text-gray-600 mb-4">B. Análisis y uso formativo de la evaluación</h4>
+                
+                <p class="label-title">a. Analice los resultados de aprendizajes que pudo levantar y explique qué conclusiones extrajo:</p>
+                <div class="editable mb-4" contenteditable="true" data-maxlength="2000" data-key="analisis_resultados">
+                    <p class="mb-2">📊 <span class="competente">A partir del monitoreo con la pauta de cotejo, observé que un 80% de los estudiantes logró ejecutar correctamente los pasos procedimentales (indicadores 2, 3 y 4). Sin embargo, detecté dos errores sistemáticos: casi la mitad de las parejas omitió la calibración inicial (indicador 1) y un grupo considerable de estudiantes, si bien leía el número, no lograba conectarlo con la decisión final, mostrando dificultad en el indicador 5 (interpretación).</span></p>
+                    <p><span class="destacado">Mi conclusión principal fue que había una brecha entre el "hacer" mecánico y el "comprender para decidir". Los estudiantes, en su mayoría, podían seguir la receta, pero no todos entendían el porqué de cada paso y su impacto en la confiabilidad del resultado. Fue revelador ver que las parejas con estudiantes de diversas nacionalidades generaron discusiones más ricas, comparando la importancia de la calidad en frutas de sus países de origen, lo que demostró que su contexto cultural es un potente activador de aprendizaje. La principal conclusión es la necesidad de reforzar no solo el procedimiento, sino el criterio técnico que lo sustenta para formar técnicos capaces de tomar decisiones fundamentadas.</span></p>
+                </div>
+                <div class="char-counter">0/2000</div>
+
+                <p class="label-title">b. ¿Cuáles son las posibles causas de estos resultados?</p>
+                <div class="editable mb-4" contenteditable="true" data-maxlength="2000" data-key="causas_resultados">
+                   <p class="mb-2">🧠 <span class="competente">Una causa probable de la omisión de la calibración se relaciona con las características de los estudiantes, quienes por su enfoque práctico y conocimientos básicos, tienden a ir directamente a la acción principal (medir), subestimando los pasos preparatorios. Su ansiedad por obtener un resultado tangible a veces prima sobre la rigurosidad del método.</span></p>
+                   <p><span class="destacado">Sin embargo, un análisis más profundo me lleva a identificar causas en mis propias decisiones pedagógicas. Mi modelado, aunque completo, fue realizado una sola vez para todo el grupo. Para un curso con esta diversidad de ritmos y necesidades de apoyo (NEE, TEL), esta estrategia no fue suficiente. Es probable que la instrucción fuera demasiado rápida para algunos y no enfaticé lo suficiente que la calibración no es un paso opcional, sino uno crítico que garantiza la validez de la medición. Adicionalmente, como factor contextual, la disposición del laboratorio con un solo mesón central para la demostración dificultó la visibilidad para los estudiantes ubicados en la parte posterior, lo que pudo haber contribuido a que perdieran detalles clave del procedimiento.</span></p>
+                </div>
+                <div class="char-counter">0/2000</div>
+
+                <p class="label-title">c. Describa detalladamente las acciones que realizó para favorecer el logro de aprendizaje:</p>
+                <div class="editable" contenteditable="true" data-maxlength="3000" data-key="acciones_mejora">
+                    <p class="mb-2">🎯 <span class="competente">A partir del análisis, tomé acciones inmediatas y planifiqué otras a mediano plazo. Inmediatamente, al ver la dificultad con la interpretación, detuve la actividad y realicé una pausa reflexiva. Proyecté los datos de un grupo en la pizarra y pregunté: "Este grupo midió 11.5° Brix. Si ustedes fueran el jefe de packing, ¿qué le dirían al productor de esta naranja? ¿Se puede exportar? ¿Por qué?". Esta acción concreta permitió conectar el dato con la consecuencia y el criterio técnico.</span></p>
+                    <p class="mb-2"><span class="destacado">Para abordar las dificultades de manera diferenciada, al inicio de la clase siguiente implementé dos acciones. Para el grupo completo, diseñé una actividad donde ellos debían co-evaluar, usando la misma pauta de cotejo, un video corto donde una persona realizaba el procedimiento con errores (omitiendo la calibración y la limpieza). Esto los involucró activamente en la identificación del error y la comprensión de su importancia. Para los 5 estudiantes (incluyendo los 3 con NEE) que mostraron mayor dificultad, realicé una re-enseñanza en un grupo pequeño, donde cada uno pudo practicar nuevamente la calibración con mi supervisión directa y usando la guía de pictogramas.</span></p>
+                    <p><span class="destacado">Finalmente, para desafiar a quienes lograron los aprendizajes, les propuse que investigaran qué otros parámetros de calidad (ej. % de acidez) se miden en las naranjas y cómo un exceso de acidez podría afectar la percepción del dulzor aunque los grados Brix sean altos. Esto les permitió avanzar hacia un nivel de análisis más complejo, haciéndose cargo de todos los niveles de aprendizaje detectados en el monitoreo.</span></p>
+                </div>
+                <div class="char-counter">0/3000</div>
+            </div>
+        </div>
+
+        <div class="card mt-8 no-print">
+            <p class="text-sm text-red-700 font-semibold">Nota para el docente:</p>
+            <p class="text-sm text-gray-600">Este borrador incluye guías visuales para facilitar tu revisión. Los textos en <span class="competente">azul</span> apuntan al nivel 'Competente' y los en <span class="destacado">verde</span> al 'Destacado'. Los emojis (📊, 🎯, etc.) señalan indicadores específicos. Recuerda eliminar todas estas guías (colores, negritas especiales, emojis y esta nota) antes de copiar el texto final a la plataforma DocenteMás.</p>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const editables = document.querySelectorAll('.editable');
+        editables.forEach(div => {
+            const key = `tarea2_${div.dataset.key}`;
+            const savedContent = localStorage.getItem(`portafolio_${key}`);
+            if (savedContent) { div.innerHTML = savedContent; }
+            updateCharCounter(div);
+            div.addEventListener('input', () => updateCharCounter(div));
+        });
+
+        function updateCharCounter(div) {
+            const maxLength = parseInt(div.dataset.maxlength, 10);
+            const currentLength = div.textContent.length;
+            const counter = div.nextElementSibling;
+            if (counter && counter.classList.contains('char-counter')) {
+                counter.textContent = `${currentLength}/${maxLength}`;
+                counter.style.color = currentLength > maxLength ? '#dc2626' : '#64748b';
+            }
+        }
+
+        const saveButton = document.getElementById('saveButton');
+        const toast = document.getElementById('toast');
+        saveButton.addEventListener('click', () => {
+            editables.forEach(div => {
+                const key = `tarea2_${div.dataset.key}`;
+                localStorage.setItem(`portafolio_${key}`, div.innerHTML);
+            });
+            toast.classList.remove('opacity-0');
+            setTimeout(() => { toast.classList.add('opacity-0'); }, 2000);
+        });
+    });
+</script>
+
+</body>
+</html>

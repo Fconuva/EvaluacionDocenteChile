@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Tarea 1 - Planificación y Fundamentación</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Roboto Slab', serif;
+        }
+        .editable {
+            border: 1px solid #cbd5e1;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            background-color: white;
+            min-height: 50px;
+            transition: all 0.3s;
+            text-align: justify;
+        }
+        .editable:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .label-title {
+            font-weight: 500;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+        .char-counter {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-align: right;
+            margin-top: 0.25rem;
+        }
+        .competente {
+            color: #1d4ed8; /* Azul */
+            font-weight: bold;
+        }
+        .destacado {
+            color: #166534; /* Verde */
+            font-weight: bold;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-save {
+            background-color: #4f46e5; /* Indigo */
+        }
+        .btn-save:hover {
+            background-color: #4338ca;
+        }
+        .btn-pdf {
+            background-color: #be123c; /* Rosado */
+        }
+        .btn-pdf:hover {
+            background-color: #9f1239;
+        }
+        .legend {
+            background-color: #eef2ff;
+            border-left: 4px solid #4f46e5;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+            }
+            .no-print {
+                display: none;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                margin-bottom: 1rem;
+            }
+            .editable {
+                border: none;
+                padding: 0;
+            }
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8 no-print">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Portafolio Docente 2025</h1>
+            <p class="text-lg text-gray-600">Elvis Sepúlveda Fuentes</p>
+        </div>
+        
+        <div class="flex justify-center space-x-4 mb-8 no-print">
+            <button id="saveButton" class="btn btn-save">Guardar Avance</button>
+            <button onclick="window.print()" class="btn btn-pdf">Descargar en PDF</button>
+        </div>
+        
+        <div id="toast" class="fixed top-5 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 no-print">
+            ¡Avance guardado con éxito!
+        </div>
+
+        <!-- MÓDULO 1 -->
+        <div class="card">
+            <h2 class="text-2xl font-bold text-indigo-700 border-b-2 border-indigo-200 pb-2 mb-6">Módulo 1: Tarea 1</h2>
+            <h3 class="text-xl font-bold text-gray-700 mb-4">Planificación de la enseñanza para todos y todas los/as estudiantes</h3>
+            
+            <!-- SECCIÓN A -->
+            <div id="seccionA" class="mb-8">
+                <h4 class="text-lg font-bold text-gray-600 mb-4">A. Planificación de las experiencias de aprendizaje</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <p class="label-title">a. Curso y letra:</p>
+                        <div class="editable" contenteditable="true" data-maxlength="75" data-key="curso_letra">4° Medio E</div>
+                        <div class="char-counter">0/75</div>
+                    </div>
+                    <div>
+                        <p class="label-title">b. Módulo de la especialidad:</p>
+                        <div class="editable" contenteditable="true" data-maxlength="200" data-key="modulo_especialidad">Postcosecha de frutales</div>
+                        <div class="char-counter">0/200</div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="label-title">c. Objetivo(s) de Aprendizaje (OA):</p>
+                    <div class="editable" contenteditable="true" data-maxlength="2000" data-key="oa_general">OA 3 (Mención Agricultura): Ejecutar prácticas de post cosecha dirigidas al fruto y al predio, a fin de resguardar la calidad del producto y la sustentabilidad del predio.</div>
+                    <div class="char-counter">0/2000</div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="label-title">d. Aprendizaje esperado:</p>
+                    <div class="editable" contenteditable="true" data-maxlength="1000" data-key="aprendizaje_esperado">Ejecutan prácticas de postcosecha, identificando y utilizando instrumentos de medición para determinar el estado de madurez de la fruta y resguardar la calidad del producto final.</div>
+                    <div class="char-counter">0/1000</div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="label-title">e. Criterio(s) de evaluación:</p>
+                    <div class="editable" contenteditable="true" data-maxlength="1000" data-key="criterios_evaluacion">- Identifica correctamente los instrumentos de medición de madurez.
+- Describe la función de cada instrumento en el control de calidad.
+- Aplica el procedimiento para medir sólidos solubles (Brix) con el refractómetro.
+- Registra datos de manera manual y digital siguiendo un formato establecido.
+- Evalúa la importancia del registro preciso de datos para la toma de decisiones en postcosecha.</div>
+                    <div class="char-counter">0/1000</div>
+                </div>
+
+                <h4 class="text-lg font-bold text-gray-600 mt-8 mb-4">Tablas de descripción de tres experiencias de aprendizaje:</h4>
+                <div class="legend mb-6">
+                    <p><b>Leyenda de Guías Visuales:</b></p>
+                    <p><span class="competente">Texto en azul y negrita</span>: Elementos que apuntan al nivel 'Competente'.</p>
+                    <p><span class="destacado">Texto en verde y negrita</span>: Elementos que añaden complejidad para el nivel 'Destacado'.</p>
+                    <p><b>Emojis:</b> 💡 (Relación Actividad-Objetivo), 🧩 (Fundamentación), 🤔 (Indicadores de Evaluación), 🧠 (Comprensión de la diversidad), 🤝 (Inclusión/Trabajo Colaborativo), ♀♂ (Equidad de Género), 📊 (Análisis/Datos).</p>
+                </div>
+
+
+                <!-- EXPERIENCIA 1 -->
+                <div class="card border-t-4 border-indigo-300">
+                    <h4 class="text-lg font-bold text-gray-700 mb-4">Tabla de descripción experiencia de aprendizaje 1 (Nivel Taxonómico Básico: Identificar)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                        <div>
+                            <p class="label-title">Fecha:</p>
+                            <div class="editable" contenteditable="true" data-maxlength="30" data-key="exp1_fecha">12/08/2025</div>
+                            <div class="char-counter">0/30</div>
+                        </div>
+                        <div>
+                            <p class="label-title">Duración:</p>
+                            <div class="editable" contenteditable="true" data-maxlength="25" data-key="exp1_duracion">90 minutos</div>
+                            <div class="char-counter">0/25</div>
+                        </div>
+                    </div>
+                    <p class="label-title">Objetivo(s) que se abordará(n) en la experiencia:</p>
+                    <div class="editable mb-4" contenteditable="true" data-maxlength="500" data-key="exp1_objetivo">Identificar instrumentos de medición de madurez (refractómetro, presiómetro, etc.), comprendiendo su función para determinar el grado de madurez y calidad de la fruta según requerimientos comerciales.</div>
+                    <div class="char-counter">0/500</div>
+                    
+                    <p class="label-title">Objetivo de Aprendizaje Genérico que integrará en la experiencia:</p>
+                    <div class="editable mb-4" contenteditable="true" data-maxlength="500" data-key="exp1_oa_generico">D. Trabajar eficazmente en equipo, coordinando acciones con otros in situ o a distancia, solicitando y prestando cooperación para el buen cumplimiento de sus tareas habituales o emergentes.</div>
+                    <div class="char-counter">0/500</div>
+
+                    <p class="label-title">Descripción de las actividades para el aprendizaje y las acciones de monitoreo:</p>
+                    <div class="editable" contenteditable="true" data-maxlength="3600" data-key="exp1_descripcion">
+                        <p class="mb-2">💡 <span class="competente">Inicio:</span> <span class="destacado">Para contextualizar el aprendizaje en la realidad productiva local, se inicia la clase mostrando frutas de la temporada (uva, manzana, durazno) y se plantea la pregunta desafiante: "¿Cómo podemos saber si esta fruta cumple con la calidad exigida por un mercado como el de China o EE.UU., destinos importantes para la fruta que se produce aquí en Paine?".</span> <span class="competente">Se realiza una lluvia de ideas. Se presenta el objetivo, destacando la importancia de los instrumentos de medición en postcosecha para asegurar la calidad y el éxito de la exportación.</span></p>
+                        <p class="mb-2">🧠 <span class="competente">Desarrollo:</span> <span class="competente">Se realiza una exposición guiada y demostración práctica con los instrumentos reales: refractómetro, presiómetro, calibrador de uva, balanza y colorímetro de cerezas. Se explica qué mide cada uno, para qué sirve y en qué frutal se utiliza.</span></p>
+                        <p class="mb-2">🤝 <span class="competente">Actividad práctica:</span> <span class="destacado">Se divide al curso en grupos de 4 estudiantes, conformando equipos heterogéneos que mezclan a estudiantes con mayor habilidad práctica con aquellos más metódicos, y asegurando la diversidad de nacionalidades para enriquecer la discusión y el aprendizaje colaborativo.</span> <span class="competente">A cada grupo se le entrega un set de instrumentos. Su tarea es: 1) Identificar cada instrumento. 2) Escribir en una tabla resumen qué mide. 3) Escribir en qué fruta se puede utilizar.</span> <span class="destacado">Se fomenta que discutan y justifiquen sus respuestas, simulando ser un equipo de control de calidad.</span></p>
+                        <p class="mb-2">🤔 <span class="competente">Monitoreo:</span> <span class="competente">Circulo por los grupos, observando la manipulación de los instrumentos y las discusiones. Realizo preguntas como: "¿Por qué creen que el presiómetro es importante para las manzanas y no tanto para las uvas?", "¿Qué información nos da el colorímetro que no nos da el refractómetro?".</span> <span class="destacado">Utilizo una lista de cotejo simple para verificar si cada grupo logra identificar correctamente la función de al menos 3 de 5 instrumentos.</span></p>
+                        <p><span class="competente">Cierre:</span> <span class="competente">Se realiza una puesta en común donde cada grupo presenta uno de los instrumentos. Finalmente, como ticket de salida, responden en una hoja:</span> <span class="destacado">"Reflexiona: ¿Qué pasaría si una fruta llega a su destino sin cumplir con los estándares de calidad, y qué rol específico juega nuestra labor de control en prevenirlo?". Esto promueve la metacognición sobre la relevancia de su futuro rol profesional.</span></p>
+                    </div>
+                    <div class="char-counter">0/3600</div>
+                </div>
+
+                <!-- EXPERIENCIA 2 -->
+                <div class="card border-t-4 border-indigo-300">
+                    <h4 class="text-lg font-bold text-gray-700 mb-4">Tabla de descripción experiencia de aprendizaje 2 (Nivel Taxonómico Medio: Aplicar/Analizar)</h4>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                        <div>
+                            <p class="label-title">Fecha:</p>
+                            <div class="editable" contenteditable="true" data-maxlength="30" data-key="exp2_fecha">19/08/2025</div>
+                            <div class="char-counter">0/30</div>
+                        </div>
+                        <div>
+                            <p class="label-title">Duración:</p>
+                            <div class="editable" contenteditable="true" data-maxlength="25" data-key="exp2_duracion">90 minutos</div>
+                            <div class="char-counter">0/25</div>
+                        </div>
+                    </div>
+                    <p class="label-title">Objetivo(s) que se abordará(n) en la experiencia:</p>
+                    <div class="editable mb-4" contenteditable="true" data-maxlength="500" data-key="exp2_objetivo">Aplicar el procedimiento de medición de sólidos solubles (grados Brix) utilizando el refractómetro en muestras de naranja, para determinar si cumplen con un estándar de calidad predefinido.</div>
+                    <div class="char-counter">0/500</div>
+                    
+                    <p class="label-title">Objetivo de Aprendizaje Genérico que integrará en la experiencia:</p>
+                    <div class="editable mb-4" contenteditable="true" data-maxlength="500" data-key="exp2_oa_generico">C. Realizar las tareas de manera prolija, cumpliendo plazos establecidos y estándares de calidad, y buscando alternativas y soluciones cuando se presentan problemas.</div>
+                    <div class="char-counter">0/500</div>
+
+                    <p class="label-title">Descripción de las actividades para el aprendizaje y las acciones de monitoreo:</p>
+                    <div class="editable" contenteditable="true" data-maxlength="3600" data-key="exp2_descripcion">
+                        <p class="mb-2">💡 <span class="competente">Inicio:</span> <span class="competente">Activo conocimientos previos con preguntas: "¿Qué diferencias de dulzor hay entre una frutilla verde y una madura? Si cosechamos una frutilla verde, ¿seguirá madurando?". Se corrigen y explican los conceptos de frutos climatéricos y no climatéricos. Se presenta el objetivo.</span></p>
+                        <p class="mb-2">🧠 <span class="destacado">Desarrollo - Desafío Práctico:</span> <span class="destacado">Se plantea un problema simulado: "Somos el equipo de control de calidad de una exportadora de Paine. Tenemos dos lotes de naranjas (Lote A y Lote B). Debemos determinar cuál de los dos cumple con el estándar mínimo de 12° Brix para ser exportado a Europa. Tendrán que medir 3 frutas por lote, registrar los datos y tomar una decisión fundamentada".</span> <span class="competente">A continuación, modelo el procedimiento completo: calibración del refractómetro con agua destilada, extracción de la muestra de jugo, aplicación en el prisma, lectura y limpieza.</span></p>
+                        <p class="mb-2">🤝 <span class="competente">Actividad práctica:</span> <span class="competente">Se organizan en parejas. Un estudiante mide y el otro registra en una planilla simple. Luego intercambian roles.</span> <span class="destacado">Para estudiantes con NEE, se proporciona una guía visual con pictogramas del paso a paso y se les asigna prioritariamente el rol de medir, que es más kinestésico. Para estudiantes con TEL, modelo el lenguaje técnico ('sólidos solubles', 'calibración') y se les pide que comuniquen verbalmente el resultado al compañero que registra, practicando la comunicación precisa.</span></p>
+                        <p class="mb-2">♀♂ <span class="destacado">Reflexión sobre Género:</span> <span class="destacado">Mientras realizan la práctica, promuevo una breve reflexión: "En los laboratorios de calidad, la precisión y el método son claves. ¿Creen que estas habilidades son masculinas o femeninas? ¿Por qué? Hombres y mujeres de nuestro liceo tienen el mismo potencial para liderar estos equipos".</span></p>
+                        <p class="mb-2">🤔 <span class="competente">Monitoreo:</span> <span class="competente">Recorro los puestos observando la correcta ejecución del procedimiento. Verifico la calibración y la limpieza. Pregunto: "¿Qué valor obtuvieron? ¿Qué significa ese número? ¿Cumple o no con el estándar?".</span></p>
+                        <p><span class="competente">Cierre:</span> <span class="competente">Cada pareja comparte sus resultados. En la pizarra, se tabulan los datos de todos.</span> <span class="destacado">Se genera una discusión guiada para llegar a una conclusión como curso: "¿Qué lote exportamos? ¿Por qué? ¿Qué hacemos con el lote que no cumple el estándar?". Así, se promueve el análisis de datos para la toma de decisiones.</span></p>
+                    </div>
+                    <div class="char-counter">0/3600</div>
+                </div>
+
+                 <!-- EXPERIENCIA 3 -->
+                <div class="card border-t-4 border-indigo-300">
+                    <h4 class="text-lg font-bold text-gray-700 mb-4">Tabla de descripción experiencia de aprendizaje 3 (Nivel Taxonómico Alto: Crear/Evaluar)</h4>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                        <div>
+                            <p class="label-title">Fecha:</p>
+                            <div class="editable" contenteditable="true" data-maxlength="30" data-key="exp3_fecha">26/08/2025</div>
+                            <div class="char-counter">0/30</div>
+                        </div>
+                        <div>
+                            <p class="label-title">Duración:</p>
+                            <div class="editable" contenteditable="true" data-maxlength="25" data-key="exp3_duracion">90 minutos</div>
+                            <div class="char-counter">0/25</div>
+                        </div>
+                    </div>
+                    <p class="label-title">Objetivo(s) que se abordará(n) en la experiencia:</p>
+                    <div class="editable mb-4" contenteditable="true" data-maxlength="500" data-key="exp3_objetivo">Evaluar la importancia del registro de datos y crear una planilla digital optimizada en una hoja de cálculo para el control de calidad en postcosecha, justificando su diseño.</div>
+                    <div class="char-counter">0/500</div>
+                    
+                    <p class="label-title">Objetivo de Aprendizaje Genérico que integrará en la experiencia:</p>
+                    <div class="editable mb-4" contenteditable="true" data-maxlength="500" data-key="exp3_oa_generico">H. Manejar tecnologías de la información y comunicación para obtener y procesar información pertinente al trabajo, así como para comunicar resultados, instrucciones e ideas.</div>
+                    <div class="char-counter">0/500</div>
+
+                    <p class="label-title">Descripción de las actividades para el aprendizaje y las acciones de monitoreo:</p>
+                    <div class="editable" contenteditable="true" data-maxlength="3600" data-key="exp3_descripcion">
+                        <p class="mb-2">💡 <span class="competente">Inicio:</span> <span class="competente">Inicio con preguntas: "¿Qué sucede si no se realiza un registro de los datos obtenidos en postcosecha? ¿Qué información necesitan los administradores para decidir si exportar una fruta?". Se muestran ejemplos reales de planillas de papel y digitales.</span></p>
+                        <p class="mb-2">📊 <span class="competente">Desarrollo:</span> <span class="competente">Se explica la diferencia en eficiencia y utilidad entre una planilla de papel y una digital (búsqueda de datos, promedios automáticos, etc.). Se realiza una demostración práctica donde lleno una planilla manual y luego la misma en una hoja de cálculo, destacando las ventajas.</span></p>
+                        <p class="mb-2">🧩 <span class="destacado">Actividad de Creación:</span> <span class="destacado">En los mismos grupos de la Experiencia 1, se plantea el desafío de CREAR una planilla digital mejorada en una hoja de cálculo. Se les indica: "En base a lo que ya hemos medido, diseñen una planilla que no solo registre los grados Brix, sino que incluya campos para calibre, color y firmeza. Deben justificar por qué su diseño es más eficiente que la planilla de papel para que el administrador de una empresa de Paine tome decisiones rápidas y confiables". Se les facilita un computador por grupo.</span></p>
+                        <p class="mb-2">🤔 <span class="competente">Monitoreo:</span> <span class="competente">Asesoro a los grupos en el uso de la hoja de cálculo, resolviendo dudas sobre fórmulas básicas (promedio) y formato de celdas. Pregunto sobre sus decisiones de diseño: "¿Por qué incluyeron esa columna? ¿Cómo ayudará ese dato a la toma de decisiones?".</span></p>
+                        <p><span class="destacado">Cierre:</span> <span class="destacado">Cada grupo proyecta su planilla y la presenta al curso. Usando los datos de la clase anterior, simulan la presentación de un mini-informe al "gerente" (el resto del curso), recomendando aceptar o rechazar los lotes de fruta y justificando su decisión en base a los datos procesados en SU planilla. Esto los posiciona en un rol profesional de alto nivel, donde evalúan, crean y comunican.</span></p>
+                    </div>
+                    <div class="char-counter">0/3600</div>
+                </div>
+
+            </div>
+
+            <!-- SECCIÓN B -->
+            <div id="seccionB">
+                <h4 class="text-lg font-bold text-gray-600 mb-4">B. Fundamentación de la planificación de una experiencia de aprendizaje</h4>
+                <div class="mb-6">
+                    <p class="label-title">Seleccione una de las tres experiencias descritas:</p>
+                    <div class="flex items-center space-x-4">
+                        <label class="flex items-center"><input type="radio" name="experiencia" class="mr-2"> Experiencia de aprendizaje 1</label>
+                        <label class="flex items-center"><input type="radio" name="experiencia" class="mr-2" checked> Experiencia de aprendizaje 2</label>
+                        <label class="flex items-center"><input type="radio" name="experiencia" class="mr-2"> Experiencia de aprendizaje 3</label>
+                    </div>
+                </div>
+                
+                <div>
+                    <p class="label-title">a. ¿Por qué las estrategias de enseñanza que planificó son pertinentes a la diversidad de sus estudiantes?</p>
+                    <div class="editable" contenteditable="true" data-maxlength="4000" data-key="fundamentacion">
+                        <p class="mb-2">🧠 <span class="competente">Las estrategias de la Experiencia 2 son pertinentes a la diversidad de mi curso porque responden directamente a su principal característica de aprendizaje: son estudiantes eminentemente prácticos. La actividad central no es una clase expositiva, sino una simulación de laboratorio ("learning by doing") donde deben manipular instrumentos y obtener datos concretos, lo que aumenta significativamente su motivación y comprensión, especialmente para aquellos con conocimientos teóricos más básicos.</span> <span class="competente">El trabajo en parejas es una estrategia clave para atender la diversidad de ritmos, ya que permite que los estudiantes se apoyen mutuamente; el más avanzado puede modelar al compañero, y quien tiene dudas puede preguntar en un entorno de confianza, sin exponerse frente a todo el grupo.</span></p>
+                        <p class="mb-2">🧩 <span class="destacado">Además, la planificación incorpora un diseño inclusivo y diversificado para atender necesidades específicas. Para los 3 estudiantes con NEE, la guía visual con pictogramas actúa como un andamiaje que reduce la carga cognitiva de seguir instrucciones verbales, permitiéndoles enfocarse en la habilidad práctica. Asignarles el rol kinestésico de "medir" potencia sus fortalezas. Para los 3 estudiantes con TEL, modelar y luego solicitarles que comuniquen verbalmente los resultados técnicos al compañero, es una oportunidad directa y protegida para practicar el lenguaje de la especialidad, una barrera frecuente para ellos.</span></p>
+                        <p class="mb-2">🤝 <span class="destacado">La pertinencia también considera la diversidad sociocultural. En el curso coexisten estudiantes chilenos, bolivianos, brasileños y haitianos. Al enmarcar la actividad en un contexto de exportación, se valida la realidad globalizada y se abre un espacio para que ellos conecten el aprendizaje con sus propias culturas, preguntándoles, por ejemplo, "¿Qué fruta importante se produce en su país y qué creen que se mide para su calidad?". Esto transforma la diversidad cultural de una simple característica a un recurso pedagógico que enriquece la clase.</span></p>
+                        <p class="mb-2">💖 <span class="destacado">Finalmente, esta estrategia busca activamente promover el respeto y la valoración de la diversidad. La reflexión sobre los estereotipos de género en el trabajo agrícola y de laboratorio desafía ideas preconcebidas y promueve la equidad. En definitiva, esta experiencia no solo busca que aprendan un procedimiento, sino que está diseñada para que cada estudiante, sin importar su ritmo, origen o necesidad de apoyo, se sienta un miembro valioso y competente del equipo de "control de calidad", demostrando que la diversidad, bien gestionada, es un activo para el aprendizaje profundo.</span></p>
+                    </div>
+                    <div class="char-counter">0/4000</div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="card mt-8">
+            <p class="text-sm text-red-700 font-semibold">Nota para el docente:</p>
+            <p class="text-sm text-gray-600">Este borrador incluye guías visuales para facilitar tu revisión. Los textos en <span class="competente">azul</span> apuntan al nivel 'Competente' y los en <span class="destacado">verde</span> al 'Destacado'. Los emojis (🧠, 💡, etc.) señalan indicadores específicos. Recuerda eliminar todas estas guías (colores, negritas especiales, emojis y esta nota) antes de copiar el texto final a la plataforma DocenteMás.</p>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const editables = document.querySelectorAll('.editable');
+
+        // Load saved data from localStorage
+        editables.forEach(div => {
+            const key = div.dataset.key;
+            const savedContent = localStorage.getItem(`portafolio_${key}`);
+            if (savedContent) {
+                div.innerHTML = savedContent;
+            }
+            updateCharCounter(div);
+        });
+
+        editables.forEach(div => {
+            div.addEventListener('input', () => {
+                updateCharCounter(div);
+            });
+        });
+
+        function updateCharCounter(div) {
+            const maxLength = parseInt(div.dataset.maxlength, 10);
+            const currentLength = div.textContent.length;
+            const counter = div.nextElementSibling;
+            if (counter && counter.classList.contains('char-counter')) {
+                counter.textContent = `${currentLength}/${maxLength}`;
+                if (currentLength > maxLength) {
+                    counter.style.color = '#dc2626'; // red-600
+                } else {
+                    counter.style.color = '#64748b'; // slate-500
+                }
+            }
+        }
+
+        // Save functionality
+        const saveButton = document.getElementById('saveButton');
+        const toast = document.getElementById('toast');
+        saveButton.addEventListener('click', () => {
+            editables.forEach(div => {
+                const key = div.dataset.key;
+                localStorage.setItem(`portafolio_${key}`, div.innerHTML);
+            });
+            
+            // Show toast notification
+            toast.classList.remove('opacity-0');
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+            }, 2000);
+        });
+    });
+</script>
+
+</body>
+</html>

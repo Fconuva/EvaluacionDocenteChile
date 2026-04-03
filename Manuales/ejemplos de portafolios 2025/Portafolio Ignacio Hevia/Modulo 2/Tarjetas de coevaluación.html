@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas de Coevaluación - Entrenador por un Minuto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .roboto-slab {
+            font-family: 'Roboto Slab', serif;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #d1d5db;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        .card-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .card-header h2 {
+            color: #1e40af;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #9ca3af;
+            border-radius: 0.25rem;
+            margin-right: 0.75rem;
+        }
+        .comment-box {
+            border-top: 1px dashed #d1d5db;
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
+        @media print {
+            body { background-color: white; }
+            .no-print { display: none; }
+            .card-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 0; }
+            .card { box-shadow: none; border: 2px solid #6b7280; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <!-- Tarjeta 1 -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-xl font-bold roboto-slab">📣 ¡Entrenador por un Minuto!</h2>
+            </div>
+            <p class="text-sm text-gray-600 mb-4">Observa a tu compañero/a y dale un consejo para mejorar.</p>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <p>Buena postura (rodillas flectadas).</p>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <p>Manos sobre la frente (diamante).</p>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <p>Empuja con brazos y piernas.</p>
+                </div>
+            </div>
+            <div class="comment-box">
+                <p class="font-semibold text-sm">Un consejo positivo:</p>
+                <div class="w-full h-16 mt-1 p-2 border rounded bg-gray-50"></div>
+            </div>
+        </div>
+        <!-- Tarjeta 2 -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-xl font-bold roboto-slab">📣 ¡Entrenador por un Minuto!</h2>
+            </div>
+            <p class="text-sm text-gray-600 mb-4">Observa a tu compañero/a y dale un consejo para mejorar.</p>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <p>Buena postura (rodillas flectadas).</p>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <p>Manos sobre la frente (diamante).</p>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <p>Empuja con brazos y piernas.</p>
+                </div>
+            </div>
+            <div class="comment-box">
+                <p class="font-semibold text-sm">Un consejo positivo:</p>
+                <div class="w-full h-16 mt-1 p-2 border rounded bg-gray-50"></div>
+            </div>
+        </div>
+        <!-- Copia y pega más tarjetas según sea necesario -->
+    </div>
+
+    <div class="text-center mt-4 mb-8 no-print">
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300">
+            Imprimir Tarjetas
+        </button>
+    </div>
+
+</body>
+</html>
